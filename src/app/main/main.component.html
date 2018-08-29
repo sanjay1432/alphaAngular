@@ -1,8 +1,16 @@
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4" style="height: 35rem; overflow-y: scroll; overflow-x: hidden">
+      <div class="card" *ngFor="let book of books" style="margin-top: 1rem">
+        <img class="card-img-top" src="{{book.image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{book.title}}</h5>
+          <p class="card-text">Date: {{book.date | date }}</p>
+          <p class="card-text">Author: {{book.author}}</p>
+        </div>
+      </div>
+      <div class="col-lg-4"></div>
     </div>
-  </div>
+   
+  

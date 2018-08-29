@@ -14,6 +14,35 @@ export class AuthService {
   getUser() {
     return  localStorage.getItem('user');
   }
+  tokengenerator() {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < 5; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+  }
+
+  onLogin(user) {
+    const saveduser = JSON.parse(this.getUser());
+    if (saveduser) {
+        if (user.username !== saveduser.username && user.password !== saveduser.password) {
+          return false;
+        } else {
+          localStorage.setItem('token', this.tokengenerator());
+          return true;
+        }
+    } else {
+          return 'notavailable';
+    }
+  }
+  isAuthenticated() {
+    const token = localStorage.getItem('token');
+    if (token == null) {
+      return false;
+    }
+    return true;
+  }
 
   public set isLoggedIn(value) {
      this.logged = value;

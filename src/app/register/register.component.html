@@ -1,20 +1,32 @@
-<form [formGroup]="registerationForm" (ngSubmit)="onRegister()">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" placeholder="Enter username">
-
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Confirm Password</label>
-    <input type="password" class="form-control" formControlName="confirmpassword" id="exampleInputPassword2" placeholder="Confirm Password">
-  </div>
-  <div *ngIf="confirmPassword.hasError('invalid')"> Invalid Password </div>
-
-  <button type="submit" [disabled]="!registerationForm.valid" class="btn btn-success">Register</button>
-
-</form>
+<div class="container">
+  <div class="row" style="padding: 3rem" >
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4 registeration" >
+        <form [formGroup]="registerationForm" (ngSubmit)="onRegister()">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" placeholder="Enter username">
+      
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
+            </div>
+      
+            <div class="form-group">
+              <label for="exampleInputPassword1">Confirm Password</label>
+              <input type="password" class="form-control" formControlName="confirmpassword" id="exampleInputPassword2" placeholder="Confirm Password">
+            </div>
+            <div *ngIf="confirmPassword.hasError('invalid')"> 
+              <p style="color: brown; font-size: 12px">confirm Password doesn't match!</p> 
+            </div>
+      
+            <div class="text-center">
+              <button type="submit" [disabled]="!registerationForm.valid" class="btn btn-success">Register</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-4"></div>
+  
+</div>
+</div>

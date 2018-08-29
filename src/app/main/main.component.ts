@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { BooksService } from '../books.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  books: any;
 
-  constructor(private authService: AuthService) { }
+  constructor( private booksService: BooksService) { }
 
   ngOnInit() {
-    // this.authService.isLoggedIn = true;
+    this.booksService.getBooks().subscribe(data => {
+      this.books = data;
+    });
   }
 
 }

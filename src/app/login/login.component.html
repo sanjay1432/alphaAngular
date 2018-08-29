@@ -1,8 +1,9 @@
+<div class="container">
 
-<div class="row">
+<div class="row" style="padding: 3rem">
   <div class="col-lg-4"></div>
-  <div class="col-lg-4">
-      <div class="card vertical-center" style="width: 28rem;">
+  <div class="col-lg-4 login">
+
           <form [formGroup]="loginForm" (ngSubmit)="onLogin()" >
               <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
@@ -13,12 +14,13 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" formControlName="password" id="exampleInputPassword2" placeholder="Password">
               </div>
-            
-            
+            <p style="color: brown; font-size: 12px">{{error}}</p>
+            <div class="text-center">
               <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Login</button>
-            
+            </div>
           </form>
-        </div>
+  
   </div>
   <div class="col-lg-4"></div>
+</div>
 </div>

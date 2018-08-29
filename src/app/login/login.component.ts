@@ -9,6 +9,7 @@ import {FormControl, AbstractControl, FormBuilder, FormGroup, Validators} from '
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  error: string;
   constructor(public router: Router, private authService: AuthService, private fb: FormBuilder) {
     this.createForm();
    }
@@ -23,7 +24,15 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.authService.isLoggedIn = true;
-    this.router.navigate(['/main']);
+    const isLoggedin = this.authService.onLogin(this.loginForm.value);
+    if (isLoggedin === 'notavailable') {
+      this.error = 'You are not registered!';
+    } else {
+      if (isLoggedin) {
+        this.router.navigate(['/main']);
+      } else {
+        this.error = 'Please check your credentials!';
+      }
+    }
   }
 }

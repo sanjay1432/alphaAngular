@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   logout() {
     this.authService.isLoggedIn = false;
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 
